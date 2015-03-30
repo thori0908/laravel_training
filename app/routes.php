@@ -13,15 +13,15 @@
 
 Route::get('/', function()
 {
-    return View::make('hello');
+    return View::make('laravel_index');
 });
 
 
-//Route::get('issue36_input', function()
-//{
-//    return View::make('home.issue36_input');
-//});
-//
+Route::get('/laravel_input', function()
+{
+    return View::make('laravel_input');
+});
+
 //Route::post('/issue36_confirm', function()
 //{
 //    return View::make('home.issue36_confirm');
