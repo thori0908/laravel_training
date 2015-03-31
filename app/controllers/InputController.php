@@ -15,9 +15,9 @@ class InputController extends BaseController {
 	|
 	*/
 
-	public function showInput()
-	{
+    public function showInput()
+    {
         return View::make('input_issue36');
-	}
+    }
 
 }

@@ -15,9 +15,9 @@ class IndexController extends BaseController {
 	|
 	*/
 
-	public function showIndex()
-	{
+    public function showIndex()
+    {
         return View::make('laravel_index');
-	}
+    }
 
 }

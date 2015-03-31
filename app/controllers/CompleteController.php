@@ -15,9 +15,9 @@ class CompleteController extends BaseController {
 	|
 	*/
 
-	public function showComplete()
-	{
+    public function showComplete()
+    {
         return View::make('complete_issue36');
-	}
+    }
 
 }

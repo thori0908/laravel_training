@@ -15,9 +15,9 @@ class ConfirmController extends BaseController {
 	|
 	*/
 
-	public function showConfirm()
-	{
+    public function showConfirm()
+    {  
         return View::make('confirm_issue36');
-	}
+    }
 
 }
