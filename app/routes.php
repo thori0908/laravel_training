@@ -11,23 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-    return View::make('laravel_index');
-});
-
-
-Route::get('/input', function()
-{
-    return View::make('input_issue36');
-});
-
-Route::post('/confirm', function()
-{
-    return View::make('confirm_issue36');
-});
-
-Route::post('/complete', function()
-{
-    return View::make('complete_issue36');
-});
+Route::get('/', 'IndexController@showIndex');
+Route::get('/input', 'InputController@showInput');
+Route::post('/confirm', 'ConfirmController@showConfirm');
+Route::post('/complete', 'CompleteController@showComplete');
