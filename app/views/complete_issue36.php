@@ -6,8 +6,9 @@
 </head>
 
 <body>
-  <h1>フォーム > TOPページ</h1>
-  <a href="input">フォームを入力する</a>
+  <h1>フォーム > 完了</h1>
+  <p>応募しました</p>
+  <a href="/">TOPページへ</a>
   <p>Copyright 2014</p>
 </body>
 </html>
