@@ -13,21 +13,21 @@
 
 Route::get('/', function()
 {
-	return View::make('issue36_input');
+    return View::make('laravel_index');
 });
 
 
-//Route::get('issue36_input', function()
-//{
-//    return View::make('home.issue36_input');
-//});
-//
-//Route::post('/issue36_confirm', function()
-//{
-//    return View::make('home.issue36_confirm');
-//});
-//
-//Route::post('/issue36_complete', function()
-//{
-//    return View::make('home.issue36_complete');
-//});
+Route::get('/input', function()
+{
+    return View::make('input_issue36');
+});
+
+Route::post('/confirm', function()
+{
+    return View::make('confirm_issue36');
+});
+
+Route::post('/complete', function()
+{
+    return View::make('complete_issue36');
+});
