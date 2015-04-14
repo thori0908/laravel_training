@@ -45,7 +45,7 @@
         </td>
       </tr>
       <tr> 
-        <td>ご意見：{{ $user['opinion'] }}</td>
+        <td>ご意見：{{ nl2br($user['opinion']) }}</td>
           <input type="hidden" name="opinion" value="{{ $user['opinion'] }}">
         </td>
       </tr>
