@@ -5,8 +5,7 @@
   <title>issue37</title>
 </head>
 <body>
-  @section('body')
-  @show
+  @yield('body')
   <p>Copyright 2014</p>
 </body>
 </html>
