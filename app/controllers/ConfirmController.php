@@ -20,6 +20,7 @@ class ConfirmController extends BaseController {
         // フォーム値取得 
         $inputAll = Input::all();
         $user = new User($inputAll);
+        var_dump($user);
         return View::make('confirm')->with('user', $user);
     }
 

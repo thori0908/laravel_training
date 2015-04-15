@@ -36,10 +36,7 @@
       </font> 
       <br>
       <label for="prefecture">都道府県：</label>
-      <select name="prefecture" id="prefecture">
-        <option value="--">--</option>
-        {{ $selectbox }}
-      </select>
+      {{ Form::select('prefecture', $prefectureNames, $user->prefecture) }}
       <font color="#ff0000">
       </font> 
       <br>        
