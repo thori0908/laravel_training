@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>  
-<head>
-  <meta charset="UTF-8">
-  <title>issue37</title>
-</head>
+@extends('layouts.formTemplate')
 
-<body>
+@section('body')
   <h1>フォーム > 入力</h1>
   <form action="confirm" method="POST">
     <fieldset>
@@ -56,6 +51,4 @@
       <input type="submit" value="確認" id="opinion"><br>
     </fieldset>
   </form> 
-  <p>Copyright 2014</p>
-</body>
-</html>
+@stop

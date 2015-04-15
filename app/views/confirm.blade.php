@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>issue37</title>
-</head>
+@extends('layouts.formTemplate')
 
-<body>
+@section('body')
   <h1>フォーム > 確認</h1>
   <form action="input" method="GET">
     <table>
@@ -60,6 +55,4 @@
     <input type="hidden" name="prefecture" value="{{ $user['prefecture'] }}">
     <input type="submit" value="送信" formaction="/complete">
   </form>
-  <p>Copyright 2014</p>
-</body>
-</html>
+@stop

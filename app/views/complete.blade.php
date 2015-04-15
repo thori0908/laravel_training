@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>issue38</title>
-</head>
+@extends('layouts.formTemplate')
 
-<body>
+@section('body')
   <h1>フォーム > 完了</h1>
   <p>応募しました</p>
   <a href="/">TOPページへ</a>
-  <p>Copyright 2014</p>
-</body>
-</html>
+@stop
