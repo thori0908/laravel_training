@@ -16,7 +16,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 
     protected $fillable = array('lastname',       'firstname',  'gender',      'postcodeFirst', 
-                                'postcodeSecond', 'prefecture', 'mailaddress', 'other', 
+                                'postcodeSecond', 'pref_id',    'mailaddress', 'other', 
                                 'opinion',        'hobbyMusic', 'hobbyMovie',  'hobbyOther', 'hobbyOtherText');
 
     public function getFullname() {

@@ -36,7 +36,7 @@
       </font> 
       <br>
       <label for="prefecture">都道府県：</label>
-      {{ Form::select('prefecture', $prefectureNames, $user->prefecture) }}
+      {{ Form::select('pref_id', array('default' => '--') + $pref_names, $user['pref_id']) }}
       <font color="#ff0000">
       </font> 
       <br>        

@@ -21,8 +21,8 @@
         </td>
       </tr>
       <tr> 
-        <td>都道府県：{{ $user['prefecture'] }}</td>
-          {{ Form::hidden('prefecture', $user['prefecture'])}}
+        <td>都道府県：{{ $pref_name }}</td>
+          {{ Form::hidden('pref_id', $user['pref_id'])}}
         </td>
       </tr>
       <tr> 

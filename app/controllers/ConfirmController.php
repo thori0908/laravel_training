@@ -20,8 +20,8 @@ class ConfirmController extends BaseController {
         // フォーム値取得 
         $inputAll = Input::all();
         $user = new User($inputAll);
-        var_dump($user);
-        return View::make('confirm')->with('user', $user);
+        $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
+        return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
     }
 
 }
