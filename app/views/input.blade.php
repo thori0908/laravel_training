@@ -2,7 +2,7 @@
 
 @section('body')
   <h1>フォーム > 入力</h1>
-  <form action="confirm" method="POST">
+  {{ Form::open(array('url'=>'confirm', 'method'=>'POST')) }}
     <fieldset>
       <legend>フォーム</legend>
       <label for="name"> 名前：</label>
@@ -72,5 +72,5 @@
       <textarea name="opinion" rows="2" cols="20" id="opinion">{{ $user->opinion }}</textarea><br>
       {{ Form::submit('確認') }}
     </fieldset>
-  </form> 
+  {{ Form::close() }}
 @stop

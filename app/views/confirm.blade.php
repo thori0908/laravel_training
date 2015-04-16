@@ -2,7 +2,7 @@
 
 @section('body')
   <h1>フォーム > 確認</h1>
-  <form action="input" method="GET">
+  {{ Form::open(array('url'=>'input', 'method'=>'GET')) }}
     <table>
       <tr>
         <td>名前：{{ $user->getFullname() }}
@@ -47,12 +47,12 @@
     </table>
     {{ Form::submit('戻る', ['formaction'=>"input"])}}
     <br>
-  </form>
-  <form action="/complete" method="POST">
+  {{ Form::close() }}
+  {{ Form::open(array('url'=>'/complete', 'method'=>'POST')) }}
     {{ Form::hidden('lastname', $user['lastname'])}}
     {{ Form::hidden('firstname', $user['firstname'])}}
     {{ Form::hidden('mailaddress', $user['mailaddress'])}}
     {{ Form::hidden('prefecture', $user['prefecture'])}}
     {{ Form::submit('送信', ['formaction'=>"/complete"])}}
-  </form>
+  {{ Form::close() }}
 @stop
