@@ -15,23 +15,15 @@
       <br>
       <label for="male">性別：</label>
       男性
-      @if ( $user->gender == "男" ) 
-          {{ Form::radio('gender',  '男', true) }}
-      @else 
-          {{ Form::radio('gender',  '男') }}
-      @endif
+      {{ Form::radio('gender', '男', $user->gender == '男') }}
       女性
-      @if ( $user->gender == "女" ) 
-          {{ Form::radio('gender',  '女', true) }}
-      @else 
-          {{ Form::radio('gender',  '女') }}
-      @endif
+      {{ Form::radio('gender', '女', $user->gender == '女') }}
       <font color="#ff0000">
       </font> 
       <br>  
       <label for="postcode">郵便番号：</label>
-      {{ Form::text('postcodeFirst',  $user->postcodeFirst, ['size'=>4]) }}
-      - {{ Form::text('postcodeSecond',  $user->postcodeSecond, ['size'=>3]) }}
+      {{ Form::text('postcodeFirst', $user->postcodeFirst, ['size'=>4]) }}
+      - {{ Form::text('postcodeSecond', $user->postcodeSecond, ['size'=>3]) }}
       <font color="#ff0000">
       </font> 
       <br>
@@ -46,23 +38,11 @@
       </font> 
       <br>
       趣味：
-      @if ( $user->hobbyMusic == "音楽鑑賞" ) 
-          {{ Form::checkbox('hobbyMusic',  '音楽鑑賞', true) }}
-      @else 
-          {{ Form::checkbox('hobbyMusic',  '音楽鑑賞') }}
-      @endif
+      {{ Form::checkbox('hobbyMusic', '音楽鑑賞', $user->hobbyMusic == "音楽鑑賞") }}
       音楽鑑賞
-      @if ( $user->hobbyMovie == "映画鑑賞" ) 
-          {{ Form::checkbox('hobbyMovie',  '映画鑑賞', true) }}
-      @else 
-          {{ Form::checkbox('hobbyMovie',  '映画鑑賞') }}
-      @endif
+      {{ Form::checkbox('hobbyMovie', '映画鑑賞', $user->hobbyMovie == "映画鑑賞" ) }}
       映画鑑賞
-      @if ( $user->hobbyOther == "その他" ) 
-          {{ Form::checkbox('hobbyOther',  'その他', true) }}
-      @else 
-          {{ Form::checkbox('hobbyOther',  'その他') }}
-      @endif
+      {{ Form::checkbox('hobbyOther', 'その他', $user->hobbyOther == "その他") }}
       その他
       {{ Form::text('hobbyOtherText', $user->hobbyOtherText, ['size'=>20]) }}
       <font color="#ff0000">
