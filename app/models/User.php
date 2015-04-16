@@ -14,7 +14,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+
+    protected $fillable = array('lastname',       'firstname',  'gender',      'postcodeFirst', 
+                                'postcodeSecond', 'pref_id',    'mailaddress', 'other', 
+                                'opinion',        'hobbyMusic', 'hobbyMovie',  'hobbyOther', 'hobbyOtherText');
+
+    public function getFullname() {
+        return sprintf('%s %s', $this->lastname, $this->firstname);
+    }
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -22,5 +29,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
-
 }

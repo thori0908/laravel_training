@@ -17,7 +17,11 @@ class ConfirmController extends BaseController {
 
     public function showConfirm()
     {  
-        return View::make('confirm_issue36');
+        // フォーム値取得 
+        $inputAll = Input::all();
+        $user = new User($inputAll);
+        $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
+        return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
     }
 
 }
