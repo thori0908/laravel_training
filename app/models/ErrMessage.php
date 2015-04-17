@@ -1,21 +1,14 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
-
-class ErrMessage extends Eloquent implements UserInterface, RemindableInterface {
-
-    use UserTrait, RemindableTrait;
-
-    private $errMessages = array("lastname" => "", "firstname" => "", "gender" => "", "postcode" => "", 
-                                 "prefecture" => "", "mailaddress" => "", "hobby" => "");
-    
+class ErrMessage{
+    private $errMessages = array(
+            "lastname"   => "", "firstname"   => "", 
+            "gender"     => "", "postcode"    => "", 
+            "prefecture" => "", "mailaddress" => "", 
+            "hobby" => ""
+    );
                    
-    protected $errors;
-    public function getErrLastname($user) {
-        $rules  = array(
+    private $rules = array(
             'lastname'       => 'required|max:50', 
             'firstname'      => 'required|max:50',
             'gender'         => 'required',
@@ -23,33 +16,29 @@ class ErrMessage extends Eloquent implements UserInterface, RemindableInterface 
             'postcodeSecond' => 'required|digits:4',
             'pref_id'        => 'required',
             'mailaddress'    => 'required|email'
-        );
+    );
 
-        $messages = array(
-            'lastname.required'    => '姓を入力して下さい',
-            'lastname.max'         => '姓は50文字以内で入力してください',
-            'firstname.required'   => '名を入力して下さい',
-            'firstname.max'        => '名は50文字以内で入力してください',
-            'gender.required'      => '性別をを選択して下さい',
+    private $messages = array(
+            'lastname.required'  => '姓を入力して下さい',
+            'lastname.max'       => '姓は50文字以内で入力してください',
+            'firstname.required' => '名を入力して下さい',
+            'firstname.max'      => '名は50文字以内で入力してください',
+            'gender.required'    => '性別を選択して下さい',
             'postcodeFirst.required'  => '郵便番号を入力して下さい', 
-            'postcodeFirst.digits'      => '郵便番号を正しく入力してください', 
+            'postcodeFirst.digits'    => '郵便番号を正しく入力してください', 
             'postcodeSecond.required' => '郵便番号を入力して下さい', 
-            'postcodeSecond.digits'     => '郵便番号を正しく入力してください', 
-            'postcodeSecond.numeric'     => '郵便番号を正数字しく入力してください', 
+            'postcodeSecond.digits'   => '郵便番号を正しく入力してください', 
+            'postcodeSecond.numeric'  => '郵便番号を正しく入力してください', 
             'pref_id'              => '',
             'mailaddress.required' => 'メールアドレスを入力してください。',
             'mailaddress.email'    => 'メールアドレスを正しく入力してください。'
-        );
+    );
 
-        $val = Validator::make($user, $rules, $messages);
-
-    $this->errors = $val->messages();
-    return $val;
+    public function getErrLastname($user) {
+        $val = Validator::make($user, $this->rules, $this->messages);
+        return $val;
     }
 
-    public function errors(){
-        return $this->errors;
-    }
   //  public function __construct($user_array) { 
   //      if (empty($user_array["lastname"])) {
   //          $this->errMessages["lastname"] = "姓を入力して下さい．";
@@ -123,6 +112,6 @@ class ErrMessage extends Eloquent implements UserInterface, RemindableInterface 
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	//protected $hidden = array('password', 'remember_token');
 
 }
