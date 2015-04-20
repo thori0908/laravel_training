@@ -9,8 +9,8 @@ class ErrMessage{
     );
                    
     private $rules = array(
-            'lastname'       => 'required|max:50', 
-            'firstname'      => 'required|max:50',
+            'lastname'       => 'required|max:50|zenkaku', 
+            'firstname'      => 'required|max:50|zenkaku',
             'gender'         => 'required',
             'postcodeFirst'  => 'required|digits:3', 
             'postcodeSecond' => 'required|digits:4',
@@ -21,8 +21,10 @@ class ErrMessage{
     private $messages = array(
             'lastname.required'  => '姓を入力して下さい',
             'lastname.max'       => '姓は50文字以内で入力してください',
+            'lastname.zenkaku'   => '姓全角で入力してください',
             'firstname.required' => '名を入力して下さい',
             'firstname.max'      => '名は50文字以内で入力してください',
+            'firstname.zenkaku'   => '姓全角で入力してください',
             'gender.required'    => '性別を選択して下さい',
             'postcodeFirst.required'  => '郵便番号を入力して下さい', 
             'postcodeFirst.digits'    => '郵便番号を正しく入力してください', 

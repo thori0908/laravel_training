@@ -67,6 +67,14 @@ App::down(function()
 	return Response::make("Be right back!", 503);
 });
 
+
+Validator::extend('zenkaku', function($attribute, $userName)
+{
+    if (preg_match("/^[ぁ-んァ-ヶー一-龠]+$/u", $userName)) { 
+        return true;
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File
