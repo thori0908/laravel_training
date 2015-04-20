@@ -75,6 +75,16 @@ Validator::extend('zenkaku', function($attribute, $userName)
     }
 });
 
+
+Validator::extend('prefcheck', function($attribute, $prefecture)
+{
+    if ($prefecture == "default") {
+        return false;
+    } else {
+        return true;
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Require The Filters File

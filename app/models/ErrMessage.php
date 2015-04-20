@@ -4,7 +4,7 @@ class ErrMessage{
     private $errMessages = array(
             "lastname"   => "", "firstname"   => "", 
             "gender"     => "", "postcode"    => "", 
-            "prefecture" => "", "mailaddress" => "", 
+            "pref_id" => "", "mailaddress" => "", 
             "hobby" => ""
     );
                    
@@ -14,7 +14,7 @@ class ErrMessage{
             'gender'         => 'required',
             'postcodeFirst'  => 'required|digits:3', 
             'postcodeSecond' => 'required|digits:4',
-            'pref_id'        => 'required',
+            'pref_id'        => 'required|prefcheck',
             'mailaddress'    => 'required|email'
     );
 
@@ -31,7 +31,8 @@ class ErrMessage{
             'postcodeSecond.required' => '郵便番号を入力して下さい', 
             'postcodeSecond.digits'   => '郵便番号を正しく入力してください', 
             'postcodeSecond.numeric'  => '郵便番号を正しく入力してください', 
-            'pref_id'              => '',
+            'pref_id.required'        => '都道府県を選択してください',
+            'pref_id.prefcheck'       => '都道府県を選択してください1',
             'mailaddress.required' => 'メールアドレスを入力してください。',
             'mailaddress.email'    => 'メールアドレスを正しく入力してください。'
     );
