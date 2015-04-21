@@ -18,6 +18,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     protected $fillable = array('lastname',       'firstname',  'gender',      'postcodeFirst', 
                                 'postcodeSecond', 'pref_id',    'mailaddress', 'other', 
                                 'opinion',        'hobbyMusic', 'hobbyMovie',  'hobbyOther', 'hobbyOtherText');
+    
+    public static function escapeFormValue($input) {
+        $modifiedValue = array();
+            foreach($input as $key=>$value) {
+                $formValue = $input;
+                if (!empty($formValue[$key])) {
+                    $formValue[$key] = mb_ereg_replace('^[\s　]*(.*?)[\s　]*$', '\1', $formValue[$key]);//全角空白置換 
+                    $modifiedValue[$key] = trim($formValue[$key], " ");//空白処理 
+                    $modifiedValue[$key] = htmlspecialchars($modifiedValue[$key]);  //htmlエスケープ処理
+                }
+            }
+var_dump($modifiedValue);
+        return $modifiedValue;
+    }
 
     public function getFullname() {
         return sprintf('%s %s', $this->lastname, $this->firstname);

@@ -19,6 +19,8 @@ class ConfirmController extends BaseController {
     {  
         // フォーム値取得 
         $inputAll = Input::all();
+        //escape
+        $inputAll = User::escapeFormValue($inputAll);
         $user = new User($inputAll);
         $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
         // validation
@@ -26,8 +28,8 @@ class ConfirmController extends BaseController {
         $var = $errMessage->getErrMessages($inputAll);
         if ($var->fails()) {
             return Redirect::action('InputController@showInput')
-                ->withErrors($var->messages())
-                ->withInput();
+              ->withErrors($var->messages())
+              ->withInput();
         }
         return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
     }
