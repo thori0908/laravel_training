@@ -24,11 +24,11 @@ class ConfirmController extends BaseController {
         $user = new User($inputAll);
         $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
         // validation
-        $errMessage = new ErrMessage($inputAll);
-        $var = $errMessage->getErrMessages($inputAll);
-        if ($var->fails()) {
+        $errMessage = new ErrMessage();
+        $validator = $errMessage->getErrMessages($inputAll);
+        if ($validator->fails()) {
             return Redirect::action('InputController@showInput')
-              ->withErrors($var->messages())
+              ->withErrors($validator->messages())
               ->withInput();
         }
         return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
