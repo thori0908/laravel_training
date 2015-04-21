@@ -29,7 +29,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
                     $modifiedValue[$key] = htmlspecialchars($modifiedValue[$key]);  //htmlエスケープ処理
                 }
             }
-var_dump($modifiedValue);
         return $modifiedValue;
     }
 

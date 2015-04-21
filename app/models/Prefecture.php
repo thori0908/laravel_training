@@ -33,7 +33,7 @@ class Prefecture extends Eloquent implements UserInterface, RemindableInterface 
         $number = 0;
             foreach ($this->prefectureNames as $value) {
                 DB::table('prefectures')->insert([
-                    'pref_id' => $number+1, 
+                    'pref_id' => $number + 1, 
                     'pref_name' => $value
                 ]);
                 $number = $number + 1;

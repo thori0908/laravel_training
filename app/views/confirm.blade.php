@@ -53,7 +53,7 @@
     {{ Form::hidden('lastname', $user['lastname'])}}
     {{ Form::hidden('firstname', $user['firstname'])}}
     {{ Form::hidden('mailaddress', $user['mailaddress'])}}
-    {{ Form::hidden('prefecture', $user['prefecture'])}}
+    {{ Form::hidden('pref_id', $user['pref_id'])}}
     {{ Form::submit('送信', ['formaction'=>"/complete"])}}
   {{ Form::close() }}
 @stop

@@ -17,6 +17,10 @@ class CompleteController extends BaseController {
 
     public function showComplete()
     {
+        $inputAll = Input::all();
+        $user = new User($inputAll); 
+        $user->save(); 
+        
         return View::make('complete_issue36');
     }
 
