@@ -76,9 +76,9 @@ Validator::extend('zenkaku', function($attribute, $userName)
 });
 
 
-Validator::extend('prefcheck', function($attribute, $prefecture)
+Validator::extend('prefcheck', function($attribute, $pref_id)
 {
-    if ($prefecture == "default") {
+    if ($pref_id == "default") {
         return false;
     } else {
         return true;

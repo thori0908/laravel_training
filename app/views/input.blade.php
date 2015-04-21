@@ -40,7 +40,7 @@
       {{ Form::checkbox('hobbyOther', 'その他', $user->hobbyOther == "その他") }}
       その他
       {{ Form::text('hobbyOtherText', $user->hobbyOtherText, ['size'=>20]) }}
-      {{ $errors->first('hobby','<font style="color:red">:message</font>') }}
+      {{ $errors->first('hobbyOtherText','<font style="color:red">:message</font>') }}
       <br>
       <label for="opinion">ご意見：</label>
       <textarea name="opinion" rows="2" cols="20" id="opinion">{{ $user->opinion }}</textarea><br>

@@ -4,8 +4,8 @@ class ErrMessage{
     private $errMessages = array(
             "lastname"   => "", "firstname"   => "", 
             "gender"     => "", "postcode"    => "", 
-            "pref_id" => "", "mailaddress" => "", 
-            "hobby" => ""
+            "pref_id"    => "", "mailaddress" => "", 
+            "hobbyOther" => ""
     );
                    
     private $rules = array(
@@ -15,7 +15,8 @@ class ErrMessage{
             'postcodeFirst'  => 'required|digits:3', 
             'postcodeSecond' => 'required|digits:4',
             'pref_id'        => 'required|prefcheck',
-            'mailaddress'    => 'required|email'
+            'mailaddress'    => 'required|email',
+            'hobbyOtherText' => 'required_with:hobbyOther'
     );
 
     private $messages = array(
@@ -32,15 +33,17 @@ class ErrMessage{
             'postcodeSecond.digits'   => '郵便番号を正しく入力してください', 
             'postcodeSecond.numeric'  => '郵便番号を正しく入力してください', 
             'pref_id.required'        => '都道府県を選択してください',
-            'pref_id.prefcheck'       => '都道府県を選択してください1',
+            'pref_id.prefcheck'       => '都道府県を選択してください',
             'mailaddress.required' => 'メールアドレスを入力してください。',
-            'mailaddress.email'    => 'メールアドレスを正しく入力してください。'
+            'mailaddress.email'    => 'メールアドレスを正しく入力してください。',
+            'hobbyOtherText.required_with'    => 'その他の詳細を入力してください．'
     );
 
-    public function getErrLastname($user) {
+    public function getErrMessages($user) {
         $val = Validator::make($user, $this->rules, $this->messages);
         return $val;
     }
+    
 
   //  public function __construct($user_array) { 
   //      if (empty($user_array["lastname"])) {

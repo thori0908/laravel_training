@@ -22,12 +22,10 @@ class ConfirmController extends BaseController {
         $user = new User($inputAll);
         $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
         // validation
-        $errMessage = new ErrMessage();
-        $var = $errMessage->getErrLastname($inputAll);
-
+        $errMessage = new ErrMessage($inputAll);
+        $var = $errMessage->getErrMessages($inputAll);
         if ($var->fails()) {
             return Redirect::action('InputController@showInput')
-               // ->withErrors($errMessage->errors())
                 ->withErrors($var->messages())
                 ->withInput();
         }
