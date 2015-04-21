@@ -70,19 +70,13 @@ App::down(function()
 
 Validator::extend('zenkaku', function($attribute, $userName)
 {
-    if (preg_match("/^[ぁ-んァ-ヶー一-龠]+$/u", $userName)) { 
-        return true;
-    }
+    return preg_match("/^[ぁ-んァ-ヶー一-龠]+$/u", $userName) == true;
 });
 
 
 Validator::extend('prefcheck', function($attribute, $pref_id)
 {
-    if ($pref_id == "default") {
-        return false;
-    } else {
-        return true;
-    }
+    return ($pref_id != "default") == true;
 });
 
 /*
