@@ -14,9 +14,16 @@ class CompleteController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+    // csrf filter
+    public function __construct() {
+        $this->beforeFilter('csrf', array('on' => 'post'));
+    }
 
-    public function showComplete()
-    {
+    public function showComplete() {
+        $inputAll = Input::all();
+        $user = new User($inputAll); 
+        $user->save(); 
+        
         return View::make('complete_issue36');
     }
 

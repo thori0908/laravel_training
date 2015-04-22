@@ -5,34 +5,35 @@
   {{ Form::open(array('url'=>'input', 'method'=>'GET')) }}
     <table>
       <tr>
-        <td>名前：{{ $user->getFullname() }}
+        <td>名前：{{{ $user->getFullname() }}}
           {{ Form::hidden('lastname', $user['lastname'])}}
           {{ Form::hidden('firstname', $user['firstname'])}}
         </td>
       </tr>
       <tr>
-        <td>性別：{{ $user['gender'] }}
+        <td>性別：{{{ $user['gender'] }}}
           {{ Form::hidden('gender', $user['gender'])}}
       </tr>
       <tr> 
-        <td>郵便番号：{{ $user['postcodeFirst'] }} - {{ $user['postcodeSecond'] }}
+        <td>郵便番号：{{{ $user['postcodeFirst'] }}} - {{{ $user['postcodeSecond'] }}}
           {{ Form::hidden('gender', $user['gender'])}}
           {{ Form::hidden('postcodeFirst', $user['postcodeFirst'])}}
+          {{ Form::hidden('postcodeSecond', $user['postcodeSecond'])}}
         </td>
       </tr>
       <tr> 
-        <td>都道府県：{{ $pref_name }}</td>
+        <td>都道府県：{{{ $pref_name }}}</td>
           {{ Form::hidden('pref_id', $user['pref_id'])}}
         </td>
       </tr>
       <tr> 
-        <td>メールアドレス：{{ $user['mailaddress'] }}</td>
+        <td>メールアドレス：{{{ $user['mailaddress'] }}}</td>
           {{ Form::hidden('mailaddress', $user['mailaddress'])}}
         </td>
       </tr>
       <tr> 
         <td>趣味：
-          {{ $user['hobbyMusic'] }} {{ $user['hobbyMovie'] }} {{ $user['hobbyOther'] }} {{ $user['hobbyOtherText'] }}
+          {{{ $user['hobbyMusic'] }}} {{{ $user['hobbyMovie'] }}} {{{ $user['hobbyOther'] }}} {{{ $user['hobbyOtherText'] }}}
           {{ Form::hidden('hobbyMusic', $user['hobbyMusic'])}}
           {{ Form::hidden('hobbyMovie', $user['hobbyMovie'])}}
           {{ Form::hidden('hobbyOther', $user['hobbyOther'])}}
@@ -40,7 +41,7 @@
         </td>
       </tr>
       <tr> 
-        <td>ご意見：{{ nl2br($user['opinion']) }}</td>
+        <td>ご意見：{{{ nl2br($user['opinion']) }}}</td>
           {{ Form::hidden('opinion', $user['opinion'])}}
         </td>
       </tr>
@@ -52,7 +53,7 @@
     {{ Form::hidden('lastname', $user['lastname'])}}
     {{ Form::hidden('firstname', $user['firstname'])}}
     {{ Form::hidden('mailaddress', $user['mailaddress'])}}
-    {{ Form::hidden('prefecture', $user['prefecture'])}}
+    {{ Form::hidden('pref_id', $user['pref_id'])}}
     {{ Form::submit('送信', ['formaction'=>"/complete"])}}
   {{ Form::close() }}
 @stop

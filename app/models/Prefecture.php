@@ -9,12 +9,12 @@ class Prefecture extends Eloquent implements UserInterface, RemindableInterface 
 
 	use UserTrait, RemindableTrait;
 
-    protected $table = 'prefectures';
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
+    protected $table = 'prefectures';
 
     protected $fillable = array('pref_id','pref_name');
 
@@ -31,13 +31,13 @@ class Prefecture extends Eloquent implements UserInterface, RemindableInterface 
 
     public function getTable() {
         $number = 0;
-            foreach ($this->prefectureNames as $value) {
-                DB::table('prefectures')->insert([
-                    'pref_id' => $number+1, 
-                    'pref_name' => $value
-                ]);
-                $number = $number + 1;
-            }
+        foreach ($this->prefectureNames as $value) {
+            DB::table('prefectures')->insert([
+                'pref_id'   => $number + 1, 
+                'pref_name' => $value
+            ]);
+            $number = $number + 1;
+        }
     }
 	
     /**

@@ -14,14 +14,26 @@ class ConfirmController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-
-    public function showConfirm()
-    {  
-        // フォーム値取得 
-        $inputAll = Input::all();
-        $user = new User($inputAll);
-        $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
-        return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
+    // csrf filter
+    public function __construct() {
+        $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
+    public function showConfirm() {  
+        // フォーム値取得 
+        $inputAll = Input::all();
+        //escape
+        $inputAll = User::escapeFormValue($inputAll);
+        $user = new User($inputAll);
+        $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
+        // validation
+        $errMessage = new ErrMessage();
+        $validator = $errMessage->getErrMessages($inputAll);
+        if ($validator->fails()) {
+            return Redirect::to('input')
+                ->withErrors($validator->messages())
+                ->with('user', $user);
+        }
+        return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
+    }
 }

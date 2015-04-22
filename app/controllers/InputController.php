@@ -21,7 +21,12 @@ class InputController extends BaseController {
         $pref_names = DB::table('prefectures')->lists('pref_name','pref_id');
         // フォーム値取得
         $inputAll = Input::all();
-        $user = new User($inputAll);
+        // redirect時の処理
+        if (Session::has('user')) {
+            $user = Session::get('user');
+        } else { 
+            $user = new User($inputAll);
+        }
         //入力画面表示
         $inputView = View::make('input')->with('user', $user)->with('pref_names', $pref_names);
         return $inputView;
