@@ -21,14 +21,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     
     public static function escapeFormValue($input) {
         $modifiedValue = array();
-            foreach($input as $key=>$value) {
-                $formValue = $input;
-                if (!empty($formValue[$key])) {
-                    $formValue[$key] = mb_ereg_replace('^[\s　]*(.*?)[\s　]*$', '\1', $formValue[$key]);//全角空白置換 
-                    $modifiedValue[$key] = trim($formValue[$key], " ");//空白処理 
-                    $modifiedValue[$key] = htmlspecialchars($modifiedValue[$key]);  //htmlエスケープ処理
-                }
+        foreach($input as $key=>$value) {
+            $formValue = $input;
+            if (!empty($formValue[$key])) {
+                $formValue[$key] = mb_ereg_replace('^[\s　]*(.*?)[\s　]*$', '\1', $formValue[$key]);//全角空白置換 
+                $modifiedValue[$key] = trim($formValue[$key], " ");//空白処理 
+                $modifiedValue[$key] = htmlspecialchars($modifiedValue[$key]);  //htmlエスケープ処理
             }
+        }
         return $modifiedValue;
     }
 

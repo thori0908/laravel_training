@@ -27,7 +27,6 @@ class ConfirmController extends BaseController {
         $errMessage = new ErrMessage();
         $validator = $errMessage->getErrMessages($inputAll);
         if ($validator->fails()) {
-            // return Redirect::action('InputController@showInput')
             return Redirect::to('input')
                 ->withErrors($validator->messages())
                 ->with('user', $user);
