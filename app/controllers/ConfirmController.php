@@ -19,8 +19,7 @@ class ConfirmController extends BaseController {
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
-    public function showConfirm()
-    {  
+    public function showConfirm() {  
         // フォーム値取得 
         $inputAll = Input::all();
         //escape
@@ -37,5 +36,4 @@ class ConfirmController extends BaseController {
         }
         return View::make('confirm')->with('user', $user)->with('pref_name', $pref_name);
     }
-
 }
