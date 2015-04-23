@@ -24,6 +24,7 @@ class ConfirmController extends BaseController {
         $inputAll = Input::all();
         //escape
         $inputAll = User::escapeFormValue($inputAll);
+        $inputAll = User::checkHobbyOther($inputAll);
         $user = new User($inputAll);
         $pref_name = DB::table('prefectures')->where('pref_id', $user->pref_id)->pluck('pref_name');
         // validation

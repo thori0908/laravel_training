@@ -5,7 +5,8 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface 
+{
 
 	use UserTrait, RemindableTrait;
 
@@ -30,6 +31,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
             }
         }
         return $modifiedValue;
+    }
+
+    public static function checkHobbyOther ($input) {
+        if (!empty($input['hobbyOtherText'])) {
+            $input['hobbyOther'] = 'その他';  
+        }
+    return $input;
     }
 
     public function getFullname() {
