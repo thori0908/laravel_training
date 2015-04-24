@@ -1,6 +1,7 @@
 <?php
 
-class ErrMessage{
+class ErrMessage
+{
     private $rules = array(
             'lastname'       => 'required|max:50|zenkaku', 
             'firstname'      => 'required|max:50|zenkaku',

@@ -11,10 +11,18 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 	{
 		$unitTesting = true;
 
-		$testEnvironment = 'testing';
-//		$testEnvironment = 'local';
+//		$testEnvironment = 'testing';
+		$testEnvironment = 'local';
 
 		return require __DIR__.'/../../bootstrap/start.php';
 	}
+
+    public function setUp() {
+        parent::setUp();
+    }
+
+    public function tearDown() {
+        parent::tearDown();
+    }
 
 }
