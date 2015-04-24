@@ -1,17 +1,27 @@
 <?php
 
-class UserTest extends TestCase {
+require '/home/hori/public_html/laravel_training/app/models/User.php';
+class UserTest extends TestCase 
+{
 
-	/**
-	 * A basic functional test example.
-	 *
-	 * @return void
-	 */
-	public function testBasicExample()
+    /**
+     * @dataProvider otherProvider
+     */
+
+	public function testOther($input, $expected)
 	{
-		$crawler = $this->client->request('GET', '/');
-
-		$this->assertTrue($this->client->getResponse()->isOk());
+        $user = new User();
+     // $crawler = $this->client->request('GET', '/');
+        $this->assertEquals($expected, $user->checkHobbyOther($input));
+     // $this->assertTrue($this->client->getResponse()->isOk());
 	}
 
+	public function otherProvider()
+    {
+        return array(
+            array(array('hobbyOtherText'=>'てすとてすと', 'hobbyOther'=>''),      // $input
+                  array('hobbyOtherText'=>'てすとてすと', 'hobbyOther'=>'その他') // $expected
+            ),
+        ); 
+    }
 }
