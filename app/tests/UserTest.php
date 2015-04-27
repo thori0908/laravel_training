@@ -24,4 +24,22 @@ class UserTest extends TestCase
             ),
         ); 
     }
+
+    /**
+     * @dataProvider fullnameProvider
+     */
+	public function testFullname($input, $expected)
+    {
+        $user = new User($input);
+        $this->assertEquals($expected, $user->getFullname());
+    }
+
+	public function fullnameProvider()
+    {
+        return array(
+            array(array('lastname'=>'苗字', 'firstname'=>'名前'), // $input
+                  '苗字 名前' // $expected
+            )
+        );
+    }
 }

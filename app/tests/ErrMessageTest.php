@@ -10,21 +10,15 @@ class ErrMessageTest extends TestCase
 
 	public function testGetErrMessages($input, $expected)
 	{
-    //    var_dump($input);
         $errMessages = new ErrMessage();
         $validator = $errMessages->getErrMessages($input);
-       // var_dump($validator->messages($validator));
-      //  var_dump($validator->messages()->first('lastname'));
         $errMessage = $validator->messages()->first(key($input));
-        var_dump($errMessage);
         $this->assertEquals($expected, $errMessage);
 	}
 
 	public function getErrMessagesProvider()
     {
-        $expected = '姓を全角で入力して下さい';
         $name51 = str_repeat("あいうえお", 11);
-
         return array(
                 //     $input                        ,$expected 
                  array(array('lastname' =>''),       '姓を入力して下さい'),
