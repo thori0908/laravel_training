@@ -53,7 +53,7 @@ class UserTest extends TestCase
     {
         return array(
                   // 半角スペースエスケープチェック
-                     // $input                        ,     $expected
+                     // $input                             ,     $expected
                   array(array('lastname'      =>' あああ '),     array('lastname'      =>'あああ')),  
                   array(array('firstname'     =>' いいい '),     array('firstname'     =>'いいい')), 
                   array(array('postcodeFirst' =>' 123 '),        array('postcodeFirst' =>'123')), 
@@ -68,7 +68,15 @@ class UserTest extends TestCase
                   array(array('postcodeSecond'=>'　1234　'),       array('postcodeSecond'=>'1234')), 
                   array(array('mailaddress'   =>'　aaa@ii.com　'), array('mailaddress'   =>'aaa@ii.com')), 
                   array(array('opinion'       =>'　うううう　'),   array('opinion'       =>'うううう')), 
-                  array(array('hobbyOtherText'=>'　えええええ　'), array('hobbyOtherText'=>'えええええ'))
+                  array(array('hobbyOtherText'=>'　えええええ　'), array('hobbyOtherText'=>'えええええ')),
+                  // htmlエスケープチェック
+                  array(array('lastname'      =>'&あ<あ>あ\"'),     array('lastname'      =>'&amp;あ&lt;あ&gt;あ\&quot;')),  
+                  array(array('firstname'     =>'&い<い>い\"'),     array('firstname'     =>'&amp;い&lt;い&gt;い\&quot;')), 
+                  array(array('postcodeFirst' =>'&1<2>3\"'),        array('postcodeFirst' =>'&amp;1&lt;2&gt;3\&quot;')), 
+                  array(array('postcodeSecond'=>'&1<2>34\"'),       array('postcodeSecond'=>'&amp;1&lt;2&gt;34\&quot;')), 
+                  array(array('mailaddress'   =>'&a<a>a@ii.com\"'), array('mailaddress'   =>'&amp;a&lt;a&gt;a@ii.com\&quot;')), 
+                  array(array('opinion'       =>'&う<う>うう\"'),   array('opinion'       =>'&amp;う&lt;う&gt;うう\&quot;')), 
+                  array(array('hobbyOtherText'=>'&え<え>えええ\"'), array('hobbyOtherText'=>'&amp;え&lt;え&gt;えええ\&quot;'))
         );
     }
 }
