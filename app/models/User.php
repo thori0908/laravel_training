@@ -38,7 +38,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         if (!empty($input['hobbyOtherText'])) {
             $input['hobbyOther'] = 'その他';  
         }
-    return $input;
+        return $input;
     }
 
     public function getFullname() {

@@ -11,9 +11,7 @@ class UserTest extends TestCase
 	public function testOther($input, $expected)
 	{
         $user = new User();
-     // $crawler = $this->client->request('GET', '/');
         $this->assertEquals($expected, $user->checkHobbyOther($input));
-     // $this->assertTrue($this->client->getResponse()->isOk());
 	}
 
 	public function otherProvider()
@@ -40,6 +38,37 @@ class UserTest extends TestCase
             array(array('lastname'=>'苗字', 'firstname'=>'名前'), // $input
                   '苗字 名前' // $expected
             )
+        );
+    }
+
+    /**
+     * @dataProvider escapeProvider
+     */
+	public function testEscape($input, $expected)
+    {
+        $this->assertEquals($expected, User::escapeFormValue($input));
+    }
+
+	public function escapeProvider()
+    {
+        return array(
+                  // 半角スペースエスケープチェック
+                     // $input                        ,     $expected
+                  array(array('lastname'      =>' あああ '),     array('lastname'      =>'あああ')),  
+                  array(array('firstname'     =>' いいい '),     array('firstname'     =>'いいい')), 
+                  array(array('postcodeFirst' =>' 123 '),        array('postcodeFirst' =>'123')), 
+                  array(array('postcodeSecond'=>' 1234 '),       array('postcodeSecond'=>'1234')), 
+                  array(array('mailaddress'   =>' aaa@ii.com '), array('mailaddress'   =>'aaa@ii.com')), 
+                  array(array('opinion'       =>' うううう '),   array('opinion'       =>'うううう')), 
+                  array(array('hobbyOtherText'=>' えええええ '), array('hobbyOtherText'=>'えええええ')),
+                  // 全角スペースエスケープチェック
+                  array(array('lastname'      =>'　あああ　'),     array('lastname'      =>'あああ')),  
+                  array(array('firstname'     =>'　いいい　'),     array('firstname'     =>'いいい')), 
+                  array(array('postcodeFirst' =>'　123　'),        array('postcodeFirst' =>'123')), 
+                  array(array('postcodeSecond'=>'　1234　'),       array('postcodeSecond'=>'1234')), 
+                  array(array('mailaddress'   =>'　aaa@ii.com　'), array('mailaddress'   =>'aaa@ii.com')), 
+                  array(array('opinion'       =>'　うううう　'),   array('opinion'       =>'うううう')), 
+                  array(array('hobbyOtherText'=>'　えええええ　'), array('hobbyOtherText'=>'えええええ'))
         );
     }
 }
