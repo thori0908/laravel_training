@@ -24,7 +24,7 @@ class ErrMessage
             'postcodeSecond.digits' => '郵便番号を正しく入力して下さい', 
             'pref_id.required'      => '都道府県を選択してください',
             'pref_id.prefcheck'     => '都道府県を選択してください',
-            'mailaddress.email'     => 'メールアドレスを正しく入力して下さい。',
+            'mailaddress.email'     => 'メールアドレスを正しく入力して下さい',
             'hobbyOtherText.required_with'    => 'その他の詳細を入力して下さい．'
     );
 
