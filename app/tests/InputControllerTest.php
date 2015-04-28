@@ -6,9 +6,7 @@ class InputControllerTest extends TestCase
 	public function testShowInput()
 	{
         $crawler = $this->client->request('GET', 'input');
-        var_dump($crawler->filter('form')->extract(array('action')));
-        $url = $crawler->filter('form')->extract(array('action'));
-        $this->assertEquals('http://localhost/confirm', $url[0]);
-
+        $url = $crawler->filter('form')->first()->attr('action');
+        $this->assertEquals(url('/confirm'), $url);
 	}
 }

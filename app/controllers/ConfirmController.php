@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Routing\Controller as BaseController; 
+
 class ConfirmController extends BaseController {
 
 	/*
