@@ -8,13 +8,13 @@ class UserTest extends TestCase
      * @dataProvider otherProvider
      */
 
-	public function testOther($input, $expected)
-	{
+    public function testOther($input, $expected)
+    {
         $user = new User();
         $this->assertEquals($expected, $user->checkHobbyOther($input));
-	}
+    }
 
-	public function otherProvider()
+    public function otherProvider()
     {
         return array(
             array(array('hobbyOtherText'=>'てすとてすと', 'hobbyOther'=>''),      // $input
@@ -26,13 +26,13 @@ class UserTest extends TestCase
     /**
      * @dataProvider fullnameProvider
      */
-	public function testFullname($input, $expected)
+    public function testFullname($input, $expected)
     {
         $user = new User($input);
         $this->assertEquals($expected, $user->getFullname());
     }
 
-	public function fullnameProvider()
+    public function fullnameProvider()
     {
         return array(
             array(array('lastname'=>'苗字', 'firstname'=>'名前'), // $input
@@ -44,12 +44,12 @@ class UserTest extends TestCase
     /**
      * @dataProvider escapeProvider
      */
-	public function testEscape($input, $expected)
+    public function testEscape($input, $expected)
     {
         $this->assertEquals($expected, User::escapeFormValue($input));
     }
 
-	public function escapeProvider()
+    public function escapeProvider()
     {
         return array(
                   // 半角スペースエスケープチェック
