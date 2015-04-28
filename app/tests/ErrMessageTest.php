@@ -8,15 +8,15 @@ class ErrMessageTest extends TestCase
      * @dataProvider getErrMessagesProvider
      */
 
-	public function testGetErrMessages($input, $expected)
+    public function testGetErrMessages($input, $expected)
     {
         $errMessages = new ErrMessage();
         $validator = $errMessages->getErrMessages($input);
         $errMessage = $validator->messages()->first(key($input));
         $this->assertEquals($expected, $errMessage);
-	}
+    }
 
-	public function getErrMessagesProvider()
+    public function getErrMessagesProvider()
     {
         $name51 = str_repeat("あいうえお", 11);
         return array(
