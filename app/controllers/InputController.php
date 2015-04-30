@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Routing\Controller as BaseController; 
+
 class InputController extends BaseController {
 
 	/*
